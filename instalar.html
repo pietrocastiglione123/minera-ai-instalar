@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instalar o Minera AI</title>
+<meta name="description" content="Passo a passo para baixar, instalar e começar a minerar com o Minera AI no Windows ou no Mac.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0f; --card:#111117; --line:#22222e; --div:#191921;
+    --ink:#e4e5ec; --title:#f4f4f8; --muted:#9ea2b8; --faint:#6b6f86;
+    --cyan:#6fd3e6; --purple:#8b80f0; --amber:#f6c453;
+    --ui:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--cyan)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+  header{position:sticky;top:0;z-index:5;background:rgba(11,11,15,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--div)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .marca{font-weight:800;font-size:19px;color:var(--title);text-decoration:none}
+  .marca span{color:var(--cyan)}
+  nav a{font-size:14px;margin-left:16px;text-decoration:none;color:var(--muted)}
+  nav a:hover{color:var(--title)}
+  section{padding:48px 0;border-top:1px solid var(--div)}
+  .topo{border-top:0;padding-top:56px}
+  h1,h2,h3{color:var(--title);letter-spacing:-.02em;line-height:1.2;margin:0 0 14px}
+  h1{font-size:clamp(30px,6vw,44px);font-weight:800}
+  h2{font-size:clamp(24px,4vw,32px);font-weight:750}
+  h3{font-size:18px;font-weight:700;margin-top:26px}
+  p{margin:0 0 14px}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;color:var(--cyan);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;display:block}
+  .lead{font-size:19px;color:var(--muted)}
+  strong{color:var(--title)}
+  .escolha{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+  .escolha a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;color:var(--ink)}
+  .escolha a:hover{border-color:rgba(111,211,230,.5)}
+  .escolha b{display:block;font-size:20px;color:var(--title);margin-bottom:4px}
+  .escolha span{font-size:14.5px;color:var(--muted)}
+  ol.passos{list-style:none;counter-reset:p;padding:0;margin:20px 0 0}
+  ol.passos>li{counter-increment:p;position:relative;padding:0 0 22px 52px}
+  ol.passos>li::before{content:counter(p);position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;border:1px solid var(--cyan);color:var(--cyan);display:grid;place-items:center;font-weight:800;font-size:15px}
+  ol.passos>li>b{display:block;color:var(--title);font-size:18px;margin-bottom:4px}
+  ol.passos ul{margin:6px 0 0;padding-left:20px;color:var(--ink)}
+  ol.passos li li{margin:4px 0}
+  .btn{display:inline-block;background:var(--cyan);color:#0b0b0f;font-weight:700;text-decoration:none;border-radius:10px;padding:13px 22px;font-size:16px;margin:8px 8px 4px 0}
+  .btn.sec{background:var(--title)}
+  .peso{display:block;font-size:13px;color:var(--faint)}
+  .aviso{background:rgba(246,196,83,.08);border:1px solid rgba(246,196,83,.35);border-radius:12px;padding:14px 16px;margin:14px 0;font-size:15.5px}
+  .aviso b{color:var(--amber)}
+  .info{background:rgba(111,211,230,.06);border:1px solid rgba(111,211,230,.3);border-radius:12px;padding:14px 16px;margin:14px 0;font-size:15.5px}
+  .tela{font-family:var(--mono);font-size:13.5px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:2px 7px;color:var(--title);white-space:nowrap}
+  pre{background:#07070a;border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font-family:var(--mono);font-size:14px;color:var(--title);margin:10px 0}
+  details{border-bottom:1px solid var(--div);padding:14px 0}
+  summary{cursor:pointer;font-weight:600;color:var(--title);list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";float:right;color:var(--cyan)}
+  details[open] summary::after{content:"–"}
+  details p, details ul{color:var(--muted);margin:10px 0 0;font-size:16px}
+  footer{border-top:1px solid var(--div);padding:32px 0;color:var(--faint);font-size:13.5px;text-align:center}
+  @media (max-width:640px){
+    body{font-size:16px}
+    .escolha{grid-template-columns:1fr}
+    nav{display:none}
+    ol.passos>li{padding-left:46px}
+    .tela{white-space:normal}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="marca" href="#">Minera <span>AI</span></a>
+    <nav><a href="#windows">Windows</a><a href="#mac">Mac</a><a href="#comecar">Começar</a><a href="#problemas">Problemas</a></nav>
+  </div>
+</header>
+
+<section class="topo">
+  <div class="wrap">
+    <span class="eyebrow">Bem-vindo ao Minera AI</span>
+    <h1>Vamos instalar em 5 minutos.</h1>
+    <p class="lead">Siga os passos do seu computador. Depois, a parte "Começar a minerar" é igual para todo mundo.</p>
+    <div class="escolha">
+      <a href="#windows"><b>Windows</b><span>Windows 10 ou 11</span></a>
+      <a href="#mac"><b>Mac</b><span>Chip Apple (M1 a M4) ou Intel · versão de teste</span></a>
+    </div>
+    <div class="info"><strong>Tenha em mãos o e-mail que você usou na compra.</strong> É com ele que você entra no app.</div>
+  </div>
+</section>
+
+<!-- WINDOWS -->
+<section id="windows">
+  <div class="wrap">
+    <span class="eyebrow">Windows</span>
+    <h2>Instalar no Windows</h2>
+    <ol class="passos">
+      <li>
+        <b>Baixe o instalador</b>
+        <a class="btn" href="https://github.com/pietrocastiglione123/minera-ai-atualizacoes/releases/latest/download/Minera-AI-Setup.exe">Baixar para Windows</a>
+        <span class="peso">Arquivo Minera-AI-Setup.exe · cerca de 130 MB · sempre a versão mais nova</span>
+      </li>
+      <li>
+        <b>Abra o arquivo baixado</b>
+        Clique nele na barra de downloads do navegador, ou abra a pasta <span class="tela">Downloads</span> e dê dois cliques em <span class="tela">Minera-AI-Setup.exe</span>.
+      </li>
+      <li>
+        <b>Se o Windows mostrar uma tela azul de aviso</b>
+        <div class="aviso"><b>É normal.</b> Aparece <em>"O Windows protegeu o computador"</em> porque o app é novo. Clique em <span class="tela">Mais informações</span> e depois em <span class="tela">Executar assim mesmo</span>.</div>
+        Se o navegador disser que o arquivo "não é baixado com frequência", clique nos três pontinhos ao lado do download → <span class="tela">Manter</span> → <span class="tela">Manter mesmo assim</span>.
+      </li>
+      <li>
+        <b>Siga o instalador</b>
+        Clique em <span class="tela">Avançar</span> e em <span class="tela">Instalar</span>. No fim, deixe marcado "Executar Minera AI" e clique em <span class="tela">Concluir</span>. Um atalho fica na sua área de trabalho.
+      </li>
+      <li>
+        <b>Pronto</b>
+        Agora vá para <a href="#comecar">Começar a minerar</a>.
+      </li>
+    </ol>
+    <div class="info"><strong>Atualizações são automáticas no Windows.</strong> Quando sair uma versão nova, aparece no topo do app "Baixando a versão nova" com uma barra. Depois, é só clicar em <span class="tela">Atualizar agora</span>.</div>
+  </div>
+</section>
+
+<!-- MAC -->
+<section id="mac">
+  <div class="wrap">
+    <span class="eyebrow">Mac · versão de teste</span>
+    <h2>Instalar no Mac</h2>
+    <p>A versão para Mac ainda não tem o selo da Apple. Por isso, na primeira vez, o Mac pede uma liberação. Leva 1 minuto e é só uma vez.</p>
+    <ol class="passos">
+      <li>
+        <b>Descubra qual é o seu Mac</b>
+        Clique na maçã  no canto de cima, à esquerda → <span class="tela">Sobre Este Mac</span>.
+        <ul>
+          <li>Se aparecer <strong>"Chip Apple M1, M2, M3 ou M4"</strong>: baixe o de <strong>chip Apple</strong>.</li>
+          <li>Se aparecer <strong>"Processador Intel"</strong>: baixe o de <strong>Intel</strong>.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Baixe o instalador</b>
+        <a class="btn" href="https://github.com/pietrocastiglione123/minera-ai-atualizacoes/releases/download/mac/Minera-AI-Mac-Apple.dmg">Baixar para Mac com chip Apple</a>
+        <a class="btn sec" href="https://github.com/pietrocastiglione123/minera-ai-atualizacoes/releases/download/mac/Minera-AI-Mac-Intel.dmg">Baixar para Mac com Intel</a>
+        <span class="peso">Arquivo .dmg · cerca de 135 MB</span>
+      </li>
+      <li>
+        <b>Instale</b>
+        Abra o arquivo <span class="tela">.dmg</span> baixado. Na janela que abre, <strong>arraste o ícone do Minera AI para a pasta Aplicativos</strong>.
+      </li>
+      <li>
+        <b>Abra pela primeira vez (e libere)</b>
+        Abra a pasta <span class="tela">Aplicativos</span> e dê dois cliques no <strong>Minera AI</strong>.
+        <div class="aviso"><b>Vai aparecer um aviso</b> dizendo que o app não pode ser aberto porque a Apple não pode verificá-lo. É esperado nesta versão de teste. Clique em <span class="tela">OK</span> (ou <span class="tela">Concluído</span>) e siga:</div>
+        <ul>
+          <li>Abra <span class="tela">Ajustes do Sistema</span> → <span class="tela">Privacidade e Segurança</span>.</li>
+          <li>Role até o fim da página. Vai aparecer <em>"O Minera AI foi bloqueado…"</em> e o botão <span class="tela">Abrir Mesmo Assim</span>. Clique nele.</li>
+          <li>Digite a senha do Mac se pedir e clique em <span class="tela">Abrir</span>.</li>
+        </ul>
+        Das próximas vezes ele abre normal.
+      </li>
+      <li>
+        <b>Se o Mac disser que o app "está danificado"</b>
+        Abra o app <span class="tela">Terminal</span> (em Aplicativos → Utilitários), cole a linha abaixo, aperte Enter e abra o Minera AI de novo:
+        <pre>xattr -cr "/Applications/Minera AI.app"</pre>
+      </li>
+      <li>
+        <b>Pronto</b>
+        Agora vá para <a href="#comecar">Começar a minerar</a>.
+      </li>
+    </ol>
+    <div class="aviso"><b>Atualização no Mac:</b> nesta versão de teste o app não se atualiza sozinho. Quando avisarmos de uma versão nova, volte nesta página, baixe de novo e arraste para Aplicativos (clique em "Substituir"). Suas ofertas não se perdem.</div>
+  </div>
+</section>
+
+<!-- COMEÇAR -->
+<section id="comecar">
+  <div class="wrap">
+    <span class="eyebrow">Windows e Mac</span>
+    <h2>Começar a minerar</h2>
+    <ol class="passos">
+      <li>
+        <b>Entre com o e-mail da compra</b>
+        Digite o <strong>mesmo e-mail que você usou na compra</strong> e clique em <span class="tela">Mandar código</span>. Chega um código de 6 números no seu e-mail (veja também o spam e a aba Promoções). Digite o código e aceite os termos.
+      </li>
+      <li>
+        <b>Ligue uma VPN</b>
+        A busca sai da sua internet, como se você minerasse na mão, e a Meta pode limitar quem busca muito pelo mesmo endereço. Sugestão: o <strong>Proton VPN</strong>, que tem versão grátis.
+        <a class="btn sec" href="https://protonvpn.com/download">Baixar o Proton VPN</a>
+        <span class="peso">Crie a conta, abra o Proton e clique em Conectar. Pode ser qualquer país.</span>
+      </li>
+      <li>
+        <b>Escolha o que procurar</b>
+        Na tela <span class="tela">Minerar</span>: Ofertas ou Criativos → o tipo de oferta (Tráfego direto, Nutra ou WhatsApp) → o nicho → o país. Para começar, deixe a régua em <strong>10 anúncios e 10 dias</strong>.
+      </li>
+      <li>
+        <b>Clique em Minerar agora</b>
+        Confira os termos que a IA criou (pode trocar algum) e clique em <span class="tela">Começar</span>. Acompanhe pelo motor no canto: ele busca, abre cada página e julga. Pode deixar rodando e usar o computador.
+      </li>
+      <li>
+        <b>Veja o que achou</b>
+        As ofertas aprovadas caem em <span class="tela">Para analisar</span>. Abra cada uma: <span class="tela">Confirmar</span> manda para <span class="tela">Acompanhando</span> (com o gráfico). <span class="tela">Descartar</span> pede um motivo, e o motor aprende com ele.
+      </li>
+      <li>
+        <b>Todo dia</b>
+        Abra <span class="tela">Acompanhando</span> e clique em <span class="tela">Atualizar tabela</span> (é livre, não gasta mineração). Você tem <strong>3 minerações por dia</strong>.
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- PROBLEMAS -->
+<section id="problemas">
+  <div class="wrap">
+    <span class="eyebrow">Deu algum problema?</span>
+    <h2>Problemas comuns</h2>
+    <details><summary>O código não chegou no e-mail</summary><p>Espere 1 minuto e olhe o spam e a aba Promoções. Confira se digitou o mesmo e-mail da compra. Se ainda não chegar, clique em Mandar código de novo.</p></details>
+    <details><summary>O app diz que não achou a minha compra</summary><p>Use exatamente o e-mail que você usou para pagar. Se pagou agora, espere 2 minutos e tente de novo.</p></details>
+    <details><summary>Apareceu "Trocar a VPN" no meio da mineração</summary><p>A Meta limitou o endereço atual. Na VPN, desconecte e conecte em outro país, e clique em "Já troquei, continuar". A mineração continua de onde parou, sem gastar outra.</p></details>
+    <details><summary>A mineração não achou nenhuma oferta</summary><p>Veja a lista "Quase passou", que mostra o que ficou de fora e por quê. Clique em "Afrouxar a régua" ou troque o nicho ou o país.</p></details>
+    <details><summary>Posso usar em dois computadores?</summary><p>A assinatura vale para 1 computador. Se trocar de computador, fale com a gente.</p></details>
+    <details><summary>Fechei o app e ele demorou para abrir de novo (Windows)</summary><p>Ele pode estar instalando uma versão nova. Espere 1 minuto e abra de novo.</p></details>
+    <div class="info" style="margin-top:22px"><strong>Não resolveu?</strong> Fale comigo no grupo ou no WhatsApp, com um print da tela.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Minera AI · O Minera AI não é afiliado à Meta. A Biblioteca de Anúncios é uma ferramenta pública da Meta.</div>
+</footer>
+
+</body>
+</html>
